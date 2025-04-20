@@ -10,6 +10,7 @@ const games = {};
 const app = express();
 const numVovels = 3;
 const numConsonants = 6;
+const showTime = 3000;
 
 function getNewId() {
   return Math.floor(Math.random() * 16777215)
@@ -50,7 +51,7 @@ function showStep(game){
     show.points[otherPlayer.id] += points;
     show.points[show.player.id] += points;
   }
-  setTimeout(() => nextStep(game), 2000);
+  setTimeout(() => nextStep(game), showTime);
 }
 
 function nextStep(game){
