@@ -93,6 +93,10 @@ function newRound(game) {
       letters.push({ char: getNewLetter(consonantsBag), c });
     }
     player.letters = letters;
+    delete player.assignedQuestion;
+    delete player.finishedCompare
+    delete player.nextRound;
+    delete player.currentAnswer
     const currentQuestion = getNewQuestion(game);
     player.currentQuestion = currentQuestion;
     currentQuestions.push(currentQuestion);
@@ -100,7 +104,7 @@ function newRound(game) {
       player.points += game.show.points[player.id];
     }
   }
-  game.currentQuestions = currentQuestions;
+  game.currentQuestions = data.disorderArr(currentQuestions);
   delete game.show;
 }
 

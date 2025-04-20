@@ -265,4 +265,4 @@ const getAllQuestions = ()=>{
     return new Set([...questionsBlack,...questionsRed, ...questionsBlue]);
 }
 
-export default { getAllQuestions, getNewConsonantsBag, getNewVowelsBag  };
+export default { getAllQuestions, getNewConsonantsBag, getNewVowelsBag, disorderArr  };
