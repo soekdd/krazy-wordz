@@ -1,0 +1,203 @@
+:root{
+    --letterBack: #eee;
+    --letterHigh: #ddd;
+    --trans: transparent;
+}
+h2{
+    text-align: center;
+}
+#letterPool input {
+  font-size: 3em;
+  padding: 2vh;
+  width: 100%;
+}
+.icon{
+    width: 1.2em;
+    height: 1.2em;
+    padding-left: 0.5em;
+}
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttonLine {
+        width: 100vw;
+        display: flex;
+        gap: 2vw;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+
+.emptyButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width:5vw;
+    justify-content: center;
+    font-size: 40px;
+    width: 200px;
+    height: 200px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    }
+
+  .bigButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width:5vw;
+    justify-content: center;
+    font-size: 40px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  #letterPool, #questions{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    min-width: 50vw;
+    min-height: 40px;
+  }
+  .qr{
+    width: fit-content;
+    height: fit-content;
+  }
+  .inner{
+    filter: drop-shadow(3px 3px 5px #0006);
+    border:1px solid black;
+  }
+
+  .vowels .inner{
+      background: var(--letterBack);
+      background-image: radial-gradient(var(--letterHigh) 4px, transparent 0);
+      background-size: 13px 13px;
+      background-position: -19px -19px;
+  }
+
+  .consonants .inner{
+    background: var(--letterBack);
+    background-image: linear-gradient(45deg, transparent 25%, var(--letterHigh) 25%, var(--letterHigh) 50%, transparent 50%, transparent 75%, var(--letterHigh) 75%, var(--letterHigh) 100%);
+    background-size: 13px 13px;
+    background-position: -19px -19px;
+}
+
+  .letters, .card {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  #dropArea {
+    margin-bottom: 0;
+  }
+  .slot {
+    background-color: #f9f9f9;
+  }
+  .letter .inner, .slot, .rotater {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    cursor: grab;
+  }
+
+  .letter {
+   margin:1px;
+  }
+
+  .slot {
+    border: 2px dashed #666;
+    background-color: #fff;
+  }
+
+  .highlight {
+    background-color: #def;
+  }
+
+  #letterPool .disorder_0{
+    transform: rotate(0deg);
+  }
+
+  #letterPool .disorder_1{
+    transform: rotate(-5deg);
+  }
+
+  #letterPool .disorder_2{
+    transform: rotate(5deg);
+  }
+
+  #letterPool .disorder_3{
+    transform: rotate(7deg);
+  }
+
+  #letterPool .disorder_4{
+    transform: rotate(7deg);
+  }
+
+  .rotater {
+    cursor: pointer;
+    border: 2px solid white;
+  }
+
+  .rotated_1{
+    transform: rotate(90deg);
+  }
+
+  .rotated_2{
+    transform: rotate(180deg);
+  } 
+
+  .rotated_3{
+    transform: rotate(270deg);
+  }
+
+  .rotated_0{
+    transform: rotate(0deg);
+  }
+
+  .activeBtn{ width: 80%;
+    display: block;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 1em;
+    padding: 1em;
+    font-size: 1.2em;
+  }
+
+  .otherQuestions{
+    display: block;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 1em;
+    padding: 1em;
+    font-size: 1.2em;
+  }
+
+  .hitQuestion{
+    background: lightgreen;
+    font-weight: 900;
+  }
+
+  .showCard{
+    width:14vw;
+    height:50vh;
+    max-height: 200px;
+  }
+  .usedQuestion{
+    opacity: 0.3;
+  }

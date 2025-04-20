@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Letter Drag & Drop</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+      touch-action: manipulation;
+    }
+
+    .letters {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      max-width: 90vw;
+      justify-content: center;
+    }
+
+    .letter {
+      width: 40px;
+      height: 40px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      font-size: 1.2em;
+      user-select: none;
+      touch-action: none;
+    }
+
+    .card {
+      width: 300px;
+      height: 150px;
+      border: 2px dashed #666;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fafafa;
+      font-size: 1.5em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="letters" id="letterContainer"></div>
+  <div class="card" id="dropCard">Drop here</div>
+
+  <script>
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+
+    const letterContainer = document.getElementById('letterContainer');
+    const dropCard = document.getElementById('dropCard');
+
+    let touchedElement = null;
+
+    // Create letter tiles
+    letters.forEach((char, index) => {
+      const div = document.createElement('div');
+      div.className = 'letter';
+      div.textContent = char;
+      div.draggable = true;
+      div.id = `letter-${index}`;
+
+      // Mouse drag events
+      div.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', char);
+        div.style.opacity = '0.5';
+      });
+
+      div.addEventListener('dragend', () => {
+        div.style.opacity = '1';
+      });
+
+      // Touch events
+      div.addEventListener('touchstart', (e) => {
+        touchedElement = div;
+        div.style.opacity = '0.5';
+      });
+
+      div.addEventListener('touchend', (e) => {
+        div.style.opacity = '1';
+        const touch = e.changedTouches[0];
+        const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (dropTarget === dropCard || dropCard.contains(dropTarget)) {
+          if (dropCard.textContent === 'Drop here') {
+            dropCard.textContent = div.textContent;
+          } else {
+            dropCard.textContent += div.textContent;
+          }
+        }
+        touchedElement = null;
+      });
+
+      letterContainer.appendChild(div);
+    });
+
+    // Mouse drop
+    dropCard.addEventListener('dragover', (e) => {
+      e.preventDefault();
+    });
+
+    dropCard.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const droppedChar = e.dataTransfer.getData('text/plain');
+      if (dropCard.textContent === 'Drop here') {
+        dropCard.textContent = droppedChar;
+      } else {
+        dropCard.textContent += droppedChar;
+      }
+    });
+  </script>
+</body>
+</html>
